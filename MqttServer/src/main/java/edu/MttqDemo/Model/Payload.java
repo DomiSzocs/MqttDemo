@@ -1,23 +1,14 @@
 package edu.MttqDemo.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Payload implements Serializable {
     private double temperature;
-
-    public Payload() {
-    }
-
-    public Payload(double temperature) {
-        this.temperature = temperature;
-    }
-
-    // Getter and setter methods for temperature (optional)
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
 }

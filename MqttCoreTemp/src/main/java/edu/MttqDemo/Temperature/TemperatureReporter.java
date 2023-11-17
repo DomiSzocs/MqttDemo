@@ -3,6 +3,7 @@ package edu.MttqDemo.Temperature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.MttqDemo.Model.Core;
 import edu.MttqDemo.Model.Payload;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class TemperatureReporter {
     @Autowired
     private Core core;
