@@ -24,4 +24,11 @@ public class ClientConfig {
 
     @Value("${clientId}")
     private String clientId;
+
+    @Value("${keyStorePath}")
+    String keyStorePath;
+
+    @Value("${keyStorePassword}")
+    String keyStorePassword;
+
 }

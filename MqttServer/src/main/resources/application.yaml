@@ -2,4 +2,6 @@ mqttUser: admin
 mqttPassword: 12345678
 serverUri: ssl://localhost:8883
 caFilePath: MqttServer/src/main/resources/ca.crt
-clientId: Server
+keyStorePath: MqttServer/src/main/resources/keystore.jks
+keyStorePassword: asdasd
+clientId: Servers
