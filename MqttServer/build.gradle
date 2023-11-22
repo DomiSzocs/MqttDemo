@@ -1,6 +1,9 @@
 plugins {
     id 'org.springframework.boot' version '3.1.5'
+    id 'application'
 }
+
+mainClassName = 'edu.MttqDemo.Main'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter:3.1.5'

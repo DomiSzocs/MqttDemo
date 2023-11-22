@@ -1,20 +1,22 @@
 package edu.MttqDemo;
 
 import edu.MttqDemo.Config.ClientConfig;
-import org.eclipse.paho.client.mqttv3.*;
+import org.eclipse.paho.client.mqttv3.IMqttClient;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.net.ssl.*;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
@@ -38,7 +40,7 @@ public class Client {
 
     private MqttClient createMqttClient() throws Exception {
         X509Certificate caCertificate = (X509Certificate) CertificateFactory.getInstance("X.509")
-                .generateCertificate(new FileInputStream(clientConfig.getCaFilePath()));
+                .generateCertificate(new ClassPathResource(clientConfig.getCaFilePath()).getInputStream());
 
         KeyManager[] keyManagers = getKeyManagers(clientConfig.getKeyStorePath(), clientConfig.getKeyStorePassword());
 
@@ -67,7 +69,7 @@ public class Client {
 
     private KeyManager[] getKeyManagers(String keystorePath, String keystorePassword) throws Exception {
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-        try (InputStream keystoreInputStream = new FileInputStream(keystorePath)) {
+        try (InputStream keystoreInputStream = new ClassPathResource(keystorePath).getInputStream()) {
             keyStore.load(keystoreInputStream, keystorePassword.toCharArray());
         }
 

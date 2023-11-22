@@ -1,7 +1,7 @@
 mqttUser: admin
 mqttPassword: 12345678
 serverUri: ssl://localhost:8883
-caFilePath: MqttCoreTemp/src/main/resources/ca.crt
-keyStorePath: MqttCoreTemp/src/main/resources/keystore.jks
+caFilePath: ca.crt
+keyStorePath: keystore.jks
 keyStorePassword: asdasd
 clientId: Core
